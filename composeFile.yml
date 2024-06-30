@@ -1,0 +1,21 @@
+name: credit-risk
+services:
+  backend:
+    build: backend #path relative to docker_compose.yaml
+    image: backend #name, arbitary #url-path
+    container_name: fastapi #arbitary
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/code/
+
+  frontend:
+    build: frontend #path relative to docker_compose.yaml
+    image: frontend #name, arbitary #url-path
+    container_name: streamlit #arbitary
+    depends_on:
+      - backend
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./:/code/

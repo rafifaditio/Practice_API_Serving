@@ -19,7 +19,7 @@ def read_root():
 def check_model():
     try:
         # try to load model
-        with open('model_final.pkl', 'rb') as file:
+        with open('backend/model_final.pkl', 'rb') as file:
             model = pickle.load(file)
         result = {
             "status": 200,
@@ -50,7 +50,7 @@ async def predict(request: Request):
         data[replacement.get(k, k)] = data.pop(k)
     
     # load model
-    with open('model_final.pkl', 'rb') as file:
+    with open('backend/model_final.pkl', 'rb') as file:
         model = pickle.load(file)
         
     # label 
